@@ -1,5 +1,5 @@
 export default defineEventHandler((event) => {
-  const headers = new Headers();
-  headers.set("test-token", "test");
-  event.context.headers = headers;
-});
+  // event.node.req.headers['xtext'] = 'textsdcsd'
+  // console.log(getHeaders(event))
+  // event.context.headers = getHeaders(event)
+})

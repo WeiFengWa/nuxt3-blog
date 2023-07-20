@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   typescript: { shim: false },
   devtools: { enabled: false },
   modules: [
+    'nuxt-icon',
     '@element-plus/nuxt',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',

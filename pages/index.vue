@@ -1,45 +1,38 @@
 <template>
-  <div
-    class="flex h-screen select-none flex-col items-center gap-4 pt-[10vh] font-serif"
-  >
+  <div class="flex h-screen flex-col items-center gap-3 pt-[10vh]">
     <el-avatar
       class="border border-dashed"
       :src="info.logo"
       :size="60"
     ></el-avatar>
-    <p class="">{{ info.title }}</p>
+    <p class="font-semibold">{{ info.title }}</p>
     <p class="text-sm">{{ info.description }}</p>
-    <div>
-      <nuxt-link
-        class="menu-item text-slate-400 duration-500 hover:text-slate-600"
-        v-for="(item, index) in routes"
-        :key="index"
-        :to="item.path"
-      >
-        {{ item.meta?.title }}
+    <MIcon name="iconamoon:location-pin-duotone" label="中国 · 贵州" />
+    <div class="text-sm">
+      <nuxt-link class="menu-item duration-500 hover:text-blue-500" to="/">
+        首页
       </nuxt-link>
+      <template v-for="item in routes" :key="item.path">
+        <nuxt-link
+          v-if="!item.meta?.hidden"
+          class="menu-item duration-500 hover:text-blue-500"
+          :to="item.path"
+        >
+          {{ item.meta?.title }}
+        </nuxt-link>
+      </template>
     </div>
     <div class="flex-1"></div>
-    <page-footer />
+    <PageFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import VTypical from 'vue-typical'
 import { useInfoStore } from '@/stores/useInfoStore'
 
 const { info } = toRefs(useInfoStore())
-const { getInfo } = useInfoStore()
-const routes = useRouter().options.routes
-
-if (!info.value.title) {
-  getInfo()
-  console.log(
-    '%c 微风哇 %c By 微风 %c',
-    'background:#e9546b ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff; padding:5px 0;',
-    'background:#ec8c69 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #000; padding:5px 0;',
-    'background:transparent',
-  )
-}
+const routes = useRouter().options.routes[1].children
 </script>
 
 <style scoped>

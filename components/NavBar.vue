@@ -4,9 +4,9 @@
       '-translate-y-14': isUp,
       'backdrop-blur-sm': !isUp,
     }"
-    class="fixed z-40 flex h-[53px] w-full select-none justify-end border-b border-none p-4 font-serif text-sm duration-500"
+    class="fixed z-40 flex h-[53px] w-full select-none justify-end border-b border-none p-4 font-serif text-sm duration-500 sm:px-[20%]"
   >
-    <nuxt-link to="/">微风哇</nuxt-link>
+    <nuxt-link class="font-semibold" to="/">微风哇</nuxt-link>
     <span class="flex-1"></span>
     <template v-for="item in routes" :key="item.path">
       <nuxt-link v-if="!item.meta?.hidden" class="mx-2" :to="`${item.path}`">

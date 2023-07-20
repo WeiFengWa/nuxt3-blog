@@ -16,33 +16,34 @@
         </p>
       </div>
     </div>
-    <md-preview
-      class="sm:!mx-auto sm:!w-3/5"
-      v-model="data.content"
-    ></md-preview>
-    <div class="px-3 text-xs sm:!mx-auto sm:!w-3/5">
+    <md-preview class="sm:px-[20%]" v-model="data.content"></md-preview>
+    <div class="px-3 text-xs sm:!px-[20%]">
       <el-divider border-style="dashed">End</el-divider>
-      <p>文章标题：{{ data.title }}</p>
-      <p>文章作者：{{ data.author }}</p>
-      <p>文章链接：{{ fullPath }}</p>
-      <p>文章标题：{{ data.title }}</p>
-
-      <div class="flex justify-between">
+      <p class="flex justify-between pb-3">
         <span>最后编辑于 {{ formatTimeAgo(data.updateTime) }}</span>
         <span>© 允许规范转载</span>
-      </div>
+      </p>
+      <p>文章标题：{{ data.title }}</p>
+      <p>文章作者：{{ data.author }}</p>
+      <p>
+        文章链接：<a class="hover:underline" :href="href">{{ href }}</a>
+      </p>
+      <template v-if="!data.original">
+        <p>原文作者：{{ data.originalAuthor }}</p>
+        <p>
+          原文链接：<a class="hover:underline" :href="data.link">{{
+            data.link
+          }}</a>
+        </p>
+      </template>
     </div>
     <div
-      class="m-3 grid grid-cols-2 gap-x-3 gap-y-3 rounded-lg border border-dashed p-3 sm:!mx-auto sm:!w-3/5"
+      class="m-3 grid grid-cols-2 gap-x-3 gap-y-3 rounded-lg border border-dashed p-3 sm:!mx-auto sm:w-[60%]"
     >
-      <!-- <div class="flex gap-3"> -->
       <el-input> <template #prepend>昵称</template> </el-input>
       <el-input> <template #prepend>头像</template> </el-input>
-      <!-- </div> -->
-      <!-- <div class="flex gap-3"> -->
       <el-input> <template #prepend>邮箱</template> </el-input>
       <el-input> <template #prepend>网站</template> </el-input>
-      <!-- </div> -->
       <el-input
         class="col-span-2"
         type="textarea"
@@ -52,11 +53,11 @@
         show-word-limit
       ></el-input>
       <div class="col-span-2 select-none text-right">
-        <button
-          class="submit relative z-0 cursor-pointer overflow-hidden rounded bg-gray-200 px-4 py-1 font-serif font-bold duration-500 hover:text-white"
+        <el-button
+          class="submit relative z-0 cursor-pointer overflow-hidden rounded bg-slate-200 px-4 py-1 font-serif font-bold duration-500 hover:text-white"
         >
           提交
-        </button>
+        </el-button>
       </div>
     </div>
   </div>
@@ -70,10 +71,10 @@ import { formatTimeAgo } from '@/utils'
 
 const route = useRoute()
 
-let location
+const href = ref('')
 
-const fullPath = computed(() => {
-  return location ? location.href : ''
+onMounted(() => {
+  href.value = location.href
 })
 
 const { data } = await articleDetailApi(route.params.id)
@@ -81,7 +82,7 @@ const { data } = await articleDetailApi(route.params.id)
 
 <style scoped>
 :deep(.el-input-group__prepend) {
-  @apply px-3 before:text-red-500 before:content-['*'];
+  @apply px-3 after:text-red-500 after:content-['*'];
 }
 
 .submit {

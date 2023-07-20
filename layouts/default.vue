@@ -13,7 +13,9 @@
       target=".el-scrollbar__wrap"
       :right="40"
       :bottom="40"
-    ></el-backtop>
+    >
+      <Icon name="iconamoon:arrow-up-2" />
+    </el-backtop>
   </el-scrollbar>
 </template>
 

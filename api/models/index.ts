@@ -37,6 +37,7 @@ export interface Info {
   articleCount: number
   tagCount: number
   categoryCount: number
+  about: string
 }
 
 export interface TagCountInfo {
@@ -65,4 +66,20 @@ export interface Article extends Base {
   link: string
   categoryId: number
   tags: number[]
+}
+
+export interface Leave extends Base {
+  id: number
+  parent: number
+  nickName: string
+  content: string
+  email: string
+  avatar: string
+  ip: string
+  address: string
+  link: string
+  privacy: boolean
+  pinned: boolean
+  examine: number
+  children: Leave[]
 }

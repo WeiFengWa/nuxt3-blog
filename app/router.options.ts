@@ -29,6 +29,21 @@ export default <RouterConfig>{
           },
         },
         {
+          path: '/tag/:id',
+          name: 'TagArticle',
+          component: () => import('@/pages/blog/tag/index.vue'),
+          meta: {
+            title: '标签文章',
+            hidden: true,
+          },
+        },
+        {
+          path: '/leave',
+          name: 'Leave',
+          component: () => import('@/pages/blog/leave.vue'),
+          meta: { title: '留言' },
+        },
+        {
           path: '/about',
           name: 'About',
           component: () => import('@/pages/blog/about.vue'),
@@ -37,7 +52,7 @@ export default <RouterConfig>{
         {
           path: 'article/:id',
           name: 'Article',
-          component: () => import('@/pages/blog/article/[id].vue'),
+          component: () => import('@/pages/blog/article/index.vue'),
           meta: { title: '文章', hidden: true, fixed: true },
         },
       ],

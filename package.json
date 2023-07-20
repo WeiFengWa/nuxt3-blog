@@ -14,9 +14,11 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@types/node": "^18",
+    "@types/nprogress": "^0.2.0",
     "autoprefixer": "^10.4.14",
     "element-plus": "^2.3.7",
-    "nuxt": "^3.5.2",
+    "nuxt": "^3.6.3",
+    "nuxt-icon": "^0.4.1",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
@@ -26,7 +28,9 @@
     "@pinia/nuxt": "^0.4.11",
     "h3": "^1.7.0",
     "md-editor-v3": "^4.2.0",
-    "pinia": "^2.1.4"
+    "nprogress": "^0.2.0",
+    "pinia": "^2.1.4",
+    "vue-typical": "^2.1.0"
   },
   "overrides": {
     "vue": "latest"
